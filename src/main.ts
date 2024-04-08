@@ -2,6 +2,7 @@ import Map from 'ol/Map';
 import OSM from 'ol/source/OSM';
 import TileLayer from 'ol/layer/Tile';
 import View from 'ol/View';
+import Rotate from 'ol/control/Rotate';
 
 const map: Map = new Map({
   layers: [
@@ -37,3 +38,15 @@ if (zoomInButton) {
     }
   });
 }
+
+map.getControls().forEach(control => {
+  console.log(control); // Log the control to the console
+});
+
+map.getControls().forEach(control => {
+  if (control instanceof Rotate) {
+    map.removeControl(control);
+  }
+});
+
+
